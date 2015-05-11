@@ -19,10 +19,15 @@ package com.mcbouncer;
 
 import com.mcbouncer.api.MCBouncerImplementation;
 import com.mcbouncer.api.MCBouncerPlayer;
+import com.mcbouncer.impl.BukkitOfflinePlayer;
 import com.mcbouncer.impl.BukkitPlayer;
 import com.mcbouncer.impl.commands.*;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 
 public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementation {
@@ -32,6 +37,8 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
     @Override
     public void onEnable() {
         mcbouncer = new MCBouncer(this, new YamlConfig(this));
+
+        mcbouncer.getConfig().load();
 
         getServer().getPluginCommand("ban").setExecutor(new BukkitBanCommand(this));
         getServer().getPluginCommand("unban").setExecutor(new BukkitUnbanCommand(this));
@@ -53,10 +60,14 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
         this.getPluginLoader().disablePlugin(this);
     }
 
-    public MCBouncerPlayer getPlayer(String s) {
-        Player p = getServer().getPlayer(s);
+    public MCBouncerPlayer getOfflinePlayer(String s) {
+        OfflinePlayer p = getServer().getOfflinePlayer(s);
         if (p != null) {
-            return new BukkitPlayer(p);
+            UUID uid = UUID.nameUUIDFromBytes(("OfflinePlayer:" + s).getBytes(StandardCharsets.UTF_8));
+            if (uid.compareTo(p.getUniqueId()) == 0) {
+                return null;
+            }
+            return new BukkitOfflinePlayer(p);
         }
         return null;
     }
@@ -77,8 +88,8 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
         return this.getDescription().getVersion();
     }
 
-    public void sendMessage(String permission, String message) {
-        getServer().broadcast(permission, message);
+    public void broadcast(String permission, String message) {
+        getServer().broadcast(message, permission);
     }
 
     public MCBouncer getMCBouncerPlugin() {
