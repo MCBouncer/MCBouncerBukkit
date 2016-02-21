@@ -29,7 +29,7 @@
     <repositories>
         <repository>
             <id>repobo-snap</id>
-            <url>http://repo.bukkit.org/content/groups/public</url>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public</url>
         </repository>
         <repository>
             <id>mcb-repo</id>

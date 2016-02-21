@@ -45,6 +45,10 @@ public class BukkitPlayer extends BukkitCommandSender implements MCBouncerPlayer
         return this.player.getAddress().getAddress();
     }
 
+    public boolean isOnline() {
+        return this.player.isOnline();
+    }
+
     public String getName() {
         return this.player.getName();
     }

@@ -54,6 +54,11 @@ public class BukkitOfflinePlayer implements MCBouncerPlayer {
     }
 
     @Override
+    public boolean isOnline() {
+        return this.offlinePlayer.isOnline();
+    }
+
+    @Override
     public String getName() {
         return this.offlinePlayer.getName();
     }
