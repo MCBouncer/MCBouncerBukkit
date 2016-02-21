@@ -46,7 +46,7 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
         getServer().getPluginCommand("kick").setExecutor(new BukkitKickCommand(this));
         getServer().getPluginCommand("addnote").setExecutor(new BukkitNoteCommand(this));
         getServer().getPluginCommand("addglobalnote").setExecutor(new BukkitGlobalNoteCommand(this));
-        //getServer().getPluginCommand("removenote")
+        getServer().getPluginCommand("removenote").setExecutor(new BukkitRemoveNoteCommand(this));
         //getServer().getPluginCommand("banip")
         //getServer().getPluginCommand("unbanip")
         //getServer().getPluginCommand("mcbouncer")
@@ -90,6 +90,10 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
 
     public void broadcast(String permission, String message) {
         getServer().broadcast(message, permission);
+    }
+
+    public void broadcast(String s) {
+        getServer().broadcastMessage(s);
     }
 
     public MCBouncer getMCBouncerPlugin() {

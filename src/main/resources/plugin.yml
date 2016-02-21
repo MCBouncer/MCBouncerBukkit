@@ -8,6 +8,10 @@ commands:
   ban:
     description: 'Ban a username'
     usage: '/<command> [reason]'
+  timedban:
+    description: 'Ban a username for a set time'
+    usage: '/<command> <duration> [reason]'
+    aliases: ['tban', 'tempban']
   unban:
     description: 'Unban a username'
     usage: '/<command> playername'
@@ -60,7 +64,7 @@ permissions:
       mcbouncer.command.removenote: true
   mcbouncer.command.ban:
     description: Allow a player to ban using mcbouncer
-  mcbouncer.commnad.unban:
+  mcbouncer.command.unban:
     description: Allow a player to unban using mcbouncer
   mcbouncer.command.banip:
     description: Allow a player to ban ip using mcbouncer
