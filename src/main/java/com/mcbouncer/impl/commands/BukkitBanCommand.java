@@ -19,13 +19,10 @@ package com.mcbouncer.impl.commands;
 
 import com.mcbouncer.api.MCBouncerImplementation;
 import com.mcbouncer.commands.BanCommand;
-import com.mcbouncer.impl.BukkitCommandSender;
-import com.mcbouncer.impl.BukkitPlayer;
 import com.mcbouncer.impl.BukkitUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class BukkitBanCommand extends BanCommand implements CommandExecutor {
 

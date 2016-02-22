@@ -19,6 +19,7 @@ package com.mcbouncer;
 
 import com.mcbouncer.api.MCBouncerImplementation;
 import com.mcbouncer.api.MCBouncerPlayer;
+import com.mcbouncer.exceptions.MCBouncerException;
 import com.mcbouncer.impl.BukkitOfflinePlayer;
 import com.mcbouncer.impl.BukkitPlayer;
 import com.mcbouncer.impl.commands.*;
@@ -28,6 +29,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
+import java.util.logging.Level;
 
 
 public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementation {
@@ -38,8 +40,13 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
     public void onEnable() {
         mcbouncer = new MCBouncer(this, new YamlConfig(this));
 
-        mcbouncer.getConfig().load();
-
+        try {
+            mcbouncer.getConfig().load();
+        } catch (MCBouncerException e) {
+            getLogger().log(Level.SEVERE, "Failed to load the configuration", e);
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         getServer().getPluginCommand("ban").setExecutor(new BukkitBanCommand(this));
         getServer().getPluginCommand("unban").setExecutor(new BukkitUnbanCommand(this));
         getServer().getPluginCommand("lookup").setExecutor(new BukkitLookupCommand(this));
@@ -47,9 +54,10 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
         getServer().getPluginCommand("addnote").setExecutor(new BukkitNoteCommand(this));
         getServer().getPluginCommand("addglobalnote").setExecutor(new BukkitGlobalNoteCommand(this));
         getServer().getPluginCommand("removenote").setExecutor(new BukkitRemoveNoteCommand(this));
+        getServer().getPluginCommand("timedban").setExecutor(new BukkitTimedBanCommand(this));
+        getServer().getPluginCommand("mcbouncer").setExecutor(new BukkitMCBouncerPluginCommand(this));
         //getServer().getPluginCommand("banip")
         //getServer().getPluginCommand("unbanip")
-        //getServer().getPluginCommand("mcbouncer")
     }
 
     @Override

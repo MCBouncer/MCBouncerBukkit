@@ -18,16 +18,16 @@
 package com.mcbouncer.impl.commands;
 
 import com.mcbouncer.api.MCBouncerImplementation;
-import com.mcbouncer.commands.TimedBanCommand;
+import com.mcbouncer.commands.MCBouncerPluginCommand;
 import com.mcbouncer.impl.BukkitUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class BukkitTimedBanCommand extends TimedBanCommand implements CommandExecutor {
+public class BukkitMCBouncerPluginCommand extends MCBouncerPluginCommand implements CommandExecutor {
 
-    public BukkitTimedBanCommand(MCBouncerImplementation impl) {
-        super(impl);
+    public BukkitMCBouncerPluginCommand(MCBouncerImplementation plugin) {
+        super(plugin);
     }
 
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
