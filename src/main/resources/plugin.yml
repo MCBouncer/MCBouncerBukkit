@@ -15,6 +15,7 @@ commands:
   unban:
     description: 'Unban a username'
     usage: '/<command> playername'
+    aliases: ['delban', 'pardon']
   banip:
     description: 'Ban an IP'
     usage: '/<command> playername/IP'
