@@ -1,5 +1,5 @@
 /*
- * MCBouncerBukkit
+ * mcbouncer
  * Copyright 2012-2014 Deaygo Jarkko
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,22 +15,20 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl.commands;
+package com.mcbouncer.bukkit;
 
-import com.mcbouncer.api.MCBouncerImplementation;
-import com.mcbouncer.commands.TimedBanCommand;
-import com.mcbouncer.impl.BukkitUtils;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
-public class BukkitTimedBanCommand extends TimedBanCommand implements CommandExecutor {
+public class BukkitUtils {
+    public static BukkitCommandSender convertCommandSender(CommandSender commandSender) {
+        BukkitCommandSender cs;
+        if (commandSender instanceof Player) {
+            cs = new BukkitPlayer((Player)commandSender);
+        }  else {
+            cs = new BukkitCommandSender(commandSender);
+        }
 
-    public BukkitTimedBanCommand(MCBouncerImplementation impl) {
-        super(impl);
-    }
-
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        return this.processCommand(BukkitUtils.convertCommandSender(commandSender), strings);
+        return cs;
     }
 }

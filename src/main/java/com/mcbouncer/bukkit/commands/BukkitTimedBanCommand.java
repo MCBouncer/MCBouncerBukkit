@@ -15,19 +15,19 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl.commands;
+package com.mcbouncer.bukkit.commands;
 
 import com.mcbouncer.api.MCBouncerImplementation;
-import com.mcbouncer.commands.MCBouncerPluginCommand;
-import com.mcbouncer.impl.BukkitUtils;
+import com.mcbouncer.commands.TimedBanCommand;
+import com.mcbouncer.bukkit.BukkitUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class BukkitMCBouncerPluginCommand extends MCBouncerPluginCommand implements CommandExecutor {
+public class BukkitTimedBanCommand extends TimedBanCommand implements CommandExecutor {
 
-    public BukkitMCBouncerPluginCommand(MCBouncerImplementation plugin) {
-        super(plugin);
+    public BukkitTimedBanCommand(MCBouncerImplementation impl) {
+        super(impl);
     }
 
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {

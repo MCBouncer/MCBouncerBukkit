@@ -1,5 +1,5 @@
 /*
- * mcbouncer
+ * MCBouncerBukkit
  * Copyright 2012-2014 Deaygo Jarkko
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,29 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl;
+package com.mcbouncer.bukkit;
 
+import com.mcbouncer.Perm;
+import com.mcbouncer.api.MCBouncerCommandSender;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
-public class BukkitUtils {
-    public static BukkitCommandSender convertCommandSender(CommandSender commandSender) {
-        BukkitCommandSender cs;
-        if (commandSender instanceof Player) {
-            cs = new BukkitPlayer((Player)commandSender);
-        }  else {
-            cs = new BukkitCommandSender(commandSender);
-        }
+public class BukkitCommandSender implements MCBouncerCommandSender {
 
-        return cs;
+    CommandSender sender;
+
+    public BukkitCommandSender(CommandSender sender) {
+        this.sender = sender;
+    }
+
+    public String getName() {
+        return sender.getName();
+    }
+
+    public Boolean hasPermission(Perm perm) {
+        return sender.hasPermission(perm.toString());
+    }
+
+    public void sendMessage(String s) {
+        sender.sendMessage(s);
     }
 }

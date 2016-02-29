@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl.commands;
+package com.mcbouncer.bukkit.commands;
 
 import com.mcbouncer.api.MCBouncerImplementation;
-import com.mcbouncer.commands.UnbanCommand;
-import com.mcbouncer.impl.BukkitUtils;
+import com.mcbouncer.commands.LookupCommand;
+import com.mcbouncer.bukkit.BukkitUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class BukkitUnbanCommand extends UnbanCommand implements CommandExecutor {
-    public BukkitUnbanCommand(MCBouncerImplementation impl) {
+public class BukkitLookupCommand extends LookupCommand implements CommandExecutor {
+    public BukkitLookupCommand(MCBouncerImplementation impl) {
         super(impl);
     }
 

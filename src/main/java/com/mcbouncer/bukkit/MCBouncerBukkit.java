@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-package com.mcbouncer;
+package com.mcbouncer.bukkit;
 
+import com.mcbouncer.MCBouncer;
+import com.mcbouncer.YamlConfig;
 import com.mcbouncer.api.MCBouncerImplementation;
 import com.mcbouncer.api.MCBouncerPlayer;
 import com.mcbouncer.exceptions.MCBouncerException;
-import com.mcbouncer.impl.BukkitOfflinePlayer;
-import com.mcbouncer.impl.BukkitPlayer;
-import com.mcbouncer.impl.commands.*;
+import com.mcbouncer.bukkit.commands.*;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;

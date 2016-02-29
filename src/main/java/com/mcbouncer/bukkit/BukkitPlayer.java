@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl;
+package com.mcbouncer.bukkit;
 
 import com.mcbouncer.Perm;
 import com.mcbouncer.api.MCBouncerPlayer;

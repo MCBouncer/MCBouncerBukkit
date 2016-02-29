@@ -15,29 +15,22 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl;
+package com.mcbouncer.bukkit.commands;
 
-import com.mcbouncer.Perm;
-import com.mcbouncer.api.MCBouncerCommandSender;
+import com.mcbouncer.api.MCBouncerImplementation;
+import com.mcbouncer.commands.RemoveNoteCommand;
+import com.mcbouncer.bukkit.BukkitUtils;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class BukkitCommandSender implements MCBouncerCommandSender {
+public class BukkitRemoveNoteCommand extends RemoveNoteCommand implements CommandExecutor {
 
-    CommandSender sender;
-
-    public BukkitCommandSender(CommandSender sender) {
-        this.sender = sender;
+    public BukkitRemoveNoteCommand(MCBouncerImplementation impl) {
+        super(impl);
     }
 
-    public String getName() {
-        return sender.getName();
-    }
-
-    public Boolean hasPermission(Perm perm) {
-        return sender.hasPermission(perm.toString());
-    }
-
-    public void sendMessage(String s) {
-        sender.sendMessage(s);
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+        return this.processCommand(BukkitUtils.convertCommandSender(commandSender), strings);
     }
 }

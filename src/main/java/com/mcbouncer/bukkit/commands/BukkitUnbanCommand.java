@@ -1,5 +1,5 @@
 /*
- * MCBouncerBukkit
+ * mcbouncer
  * Copyright 2012-2014 Deaygo Jarkko
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,18 +15,17 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl.commands;
+package com.mcbouncer.bukkit.commands;
 
 import com.mcbouncer.api.MCBouncerImplementation;
-import com.mcbouncer.commands.RemoveNoteCommand;
-import com.mcbouncer.impl.BukkitUtils;
+import com.mcbouncer.commands.UnbanCommand;
+import com.mcbouncer.bukkit.BukkitUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class BukkitRemoveNoteCommand extends RemoveNoteCommand implements CommandExecutor {
-
-    public BukkitRemoveNoteCommand(MCBouncerImplementation impl) {
+public class BukkitUnbanCommand extends UnbanCommand implements CommandExecutor {
+    public BukkitUnbanCommand(MCBouncerImplementation impl) {
         super(impl);
     }
 

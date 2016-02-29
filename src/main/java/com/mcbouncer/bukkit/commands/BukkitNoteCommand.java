@@ -1,5 +1,5 @@
 /*
- * mcbouncer
+ * MCBouncerBukkit
  * Copyright 2012-2014 Deaygo Jarkko
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +15,18 @@
  * limitations under the License.
  */
 
-package com.mcbouncer.impl.commands;
+package com.mcbouncer.bukkit.commands;
 
 import com.mcbouncer.api.MCBouncerImplementation;
-import com.mcbouncer.commands.LookupCommand;
-import com.mcbouncer.impl.BukkitUtils;
+import com.mcbouncer.commands.NoteCommand;
+import com.mcbouncer.bukkit.BukkitUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class BukkitLookupCommand extends LookupCommand implements CommandExecutor {
-    public BukkitLookupCommand(MCBouncerImplementation impl) {
+public class BukkitNoteCommand extends NoteCommand implements CommandExecutor {
+
+    public BukkitNoteCommand(MCBouncerImplementation impl) {
         super(impl);
     }
 
