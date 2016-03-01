@@ -29,6 +29,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Collection;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -83,8 +84,8 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
     }
 
     public MCBouncerPlayer[] getOnlinePlayers() {
-        Player online[] = getServer().getOnlinePlayers();
-        BukkitPlayer players[] = new BukkitPlayer[online.length];
+        Collection<Player> online = (Collection<Player>) getServer().getOnlinePlayers();
+        BukkitPlayer players[] = new BukkitPlayer[online.size()];
         int i = 0;
         for (Player p : getServer().getOnlinePlayers()) {
             players[i] = new BukkitPlayer(p);
