@@ -17,8 +17,10 @@
 
 package com.mcbouncer.bukkit;
 
+import com.mcbouncer.api.MCBouncerPlayerLoginEvent;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
 public class BukkitUtils {
     public static BukkitCommandSender convertCommandSender(CommandSender commandSender) {
@@ -30,5 +32,26 @@ public class BukkitUtils {
         }
 
         return cs;
+    }
+
+    public static MCBouncerPlayerLoginEvent toMCBPlayerLoginEvent(AsyncPlayerPreLoginEvent event) {
+        return new MCBouncerPlayerLoginEvent(event.getName(), event.getAddress(), event.getUniqueId());
+    }
+
+    public static void fromMCBPlayerLoginEvent(MCBouncerPlayerLoginEvent mcb, AsyncPlayerPreLoginEvent event) {
+        if (mcb.isDisallowed()) {
+            switch (mcb.getReason()) {
+                case KICK_BANNED:
+                    event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_BANNED, mcb.getKickMessage());
+                    break;
+                case KICK_OTHER:
+                default:
+                    event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, mcb.getKickMessage());
+                    break;
+            }
+        }
+        else {
+            event.allow();
+        }
     }
 }

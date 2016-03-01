@@ -21,6 +21,7 @@ import com.mcbouncer.MCBouncer;
 import com.mcbouncer.YamlConfig;
 import com.mcbouncer.api.MCBouncerImplementation;
 import com.mcbouncer.api.MCBouncerPlayer;
+import com.mcbouncer.bukkit.listeners.BukkitPlayerListener;
 import com.mcbouncer.exceptions.MCBouncerException;
 import com.mcbouncer.bukkit.commands.*;
 import org.bukkit.OfflinePlayer;
@@ -56,6 +57,7 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
         getServer().getPluginCommand("removenote").setExecutor(new BukkitRemoveNoteCommand(this));
         getServer().getPluginCommand("timedban").setExecutor(new BukkitTimedBanCommand(this));
         getServer().getPluginCommand("mcbouncer").setExecutor(new BukkitMCBouncerPluginCommand(this));
+        getServer().getPluginManager().registerEvents(new BukkitPlayerListener(this), this);
         //getServer().getPluginCommand("banip")
         //getServer().getPluginCommand("unbanip")
     }
