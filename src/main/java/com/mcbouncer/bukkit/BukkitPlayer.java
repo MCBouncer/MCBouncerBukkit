@@ -56,8 +56,4 @@ public class BukkitPlayer extends BukkitCommandSender implements MCBouncerPlayer
     public Boolean hasPermission(Perm perm) {
         return this.player.hasPermission(perm.toString());
     }
-
-    public void sendMessage(String s) {
-        this.player.sendMessage(s);
-    }
 }

@@ -24,6 +24,7 @@ import com.mcbouncer.api.MCBouncerPlayer;
 import com.mcbouncer.bukkit.listeners.BukkitPlayerListener;
 import com.mcbouncer.exceptions.MCBouncerException;
 import com.mcbouncer.bukkit.commands.*;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -100,11 +101,11 @@ public class MCBouncerBukkit extends JavaPlugin implements MCBouncerImplementati
     }
 
     public void broadcast(String permission, String message) {
-        getServer().broadcast(message, permission);
+        getServer().broadcast(ChatColor.translateAlternateColorCodes('&', message), permission);
     }
 
     public void broadcast(String s) {
-        getServer().broadcastMessage(s);
+        getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', s));
     }
 
     public MCBouncer getMCBouncerPlugin() {

@@ -19,6 +19,7 @@ package com.mcbouncer.bukkit;
 
 import com.mcbouncer.Perm;
 import com.mcbouncer.api.MCBouncerCommandSender;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public class BukkitCommandSender implements MCBouncerCommandSender {
@@ -38,6 +39,6 @@ public class BukkitCommandSender implements MCBouncerCommandSender {
     }
 
     public void sendMessage(String s) {
-        sender.sendMessage(s);
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
     }
 }

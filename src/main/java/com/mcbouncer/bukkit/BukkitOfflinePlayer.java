@@ -19,6 +19,7 @@ package com.mcbouncer.bukkit;
 
 import com.mcbouncer.Perm;
 import com.mcbouncer.api.MCBouncerPlayer;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 
 import java.net.InetAddress;
@@ -75,7 +76,7 @@ public class BukkitOfflinePlayer implements MCBouncerPlayer {
     @Override
     public void sendMessage(String s) {
         if (this.offlinePlayer.isOnline()) {
-            this.offlinePlayer.getPlayer().sendMessage(s);
+            this.offlinePlayer.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', s));
         }
     }
 }
